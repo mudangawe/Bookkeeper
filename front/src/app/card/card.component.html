@@ -1,0 +1,37 @@
+<div class="card">  
+    <div class="inner_card" *ngFor="let element of contactDetails; let i = index">
+        <div class="product-card">
+                <div class="card_header">
+                  <h5>  {{element.firstName}}  {{element.surname}} </h5>
+                </div>
+                <div class="innerContent">
+                    <div class="contactDetails">
+                        <ul>
+                            <li>
+                                Telephone: {{element.contactDetails.Telephone}}
+                            </li>
+                            <li>
+                                Address: {{element.contactDetails.Address}}
+                            </li>
+                            <li>
+                                Cell: {{element.contactDetails.Cell}}
+                            </li>
+                            <li>
+                                Email: {{element.contactDetails.Email}}
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="icons">
+                        <ul>
+                            <li> <a  (click)="edit()" > <i class="fas fa-edit"></i> </a> </li>
+                            <li> <a (click)="delete()" > <i class="fas fa-trash"></i> </a></li>
+                        </ul>
+                        
+                    </div>
+                
+                </div>
+        </div>
+    </div>
+    
+</div>

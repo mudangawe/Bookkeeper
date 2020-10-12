@@ -1,0 +1,14 @@
+<div class="app_root container"> 
+  <div class="heading">
+      <br>
+      <h4>Book Keeper</h4><br>
+        <form  [formGroup]="search" (ngSubmit)="onSubmit()"> 
+
+          <input type="text" placeholder="search.." ><br><br>
+           <button routerLink="/Form">Add new Contact</button>
+        </form>   
+  </div>
+  <br>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

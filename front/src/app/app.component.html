@@ -2,11 +2,8 @@
   <div class="heading">
       <br>
       <h4>Book Keeper</h4><br>
-        <form  [formGroup]="search" (ngSubmit)="onSubmit()"> 
-
-          <input type="text" placeholder="search.." ><br><br>
-           <button routerLink="/Form">Add new Contact</button>
-        </form>   
+          <input type="text" placeholder="search.."   (input)="modelChangeFn($event)"><br><br>
+          <button routerLink="/Form">Add new Contact</button> 
   </div>
   <br>
   <router-outlet></router-outlet>

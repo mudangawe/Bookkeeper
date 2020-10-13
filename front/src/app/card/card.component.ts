@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {faTrash ,faEdit,faCoffee } from '@fortawesome/fontawesome-free';
 import {Router} from '@angular/router';
 import {ServiceService} from '../service.service';
-import {Contact} from '../contact'
+import { Contact } from '../contact';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -14,36 +13,33 @@ export class CardComponent implements OnInit {
   constructor(private router:Router, private http:ServiceService) {
     this.geIteams();
    }
+  fileName= 'ExcelSheet.xlsx';
   elements = Array(20);
-  contactDetails:[Contact]
+  contactDetails:Contact [];
   contactAddress =[];
   ngOnInit(): void {
+    this.http.updateArray().subscribe(data => console.log( data))
   }
-  edit()
+  edit(index)
   { 
-    this.router.navigateByUrl('/Form')
+   this.router.navigate(['/Form'],{queryParams:{id: index}})
+  
   }
-  delete()
+  delete(index)
   { 
-    this.router.navigateByUrl('/Form')
+    this.http.remove(index)
+    this.http.httpDelete(this.contactDetails[index].ContactId)
   }
   geIteams(): void
   {
-    this.http.httpGet().subscribe(response => {this.setContact(response)});
+    //  this.contactDetails = this.http.getAll();
+      this.http.httpGet().subscribe(response => {this.setContact(response)});
   }
   setContact(response)
   {
-      this.contactDetails = response;
-      console.log(this.contactDetails)
-    
-      for(let index =0; index < this.contactDetails.length; index++)
-      {
-        let map = this.contactDetails[index].contactDetails;
-        
-        for(var key in map) 
-        {
-          //this.contactAddress( key,map[key])
-        }
-    }
+      this.contactDetails = this.http.getAll(); 
+  }
+  exportToExcel(){
+    this.http.exportToExcel();
   }
 }

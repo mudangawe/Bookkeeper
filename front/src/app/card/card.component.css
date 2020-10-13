@@ -15,14 +15,26 @@
     grid-template-columns: auto auto;
        
 }
-.card{
+.card_box{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: #F0F2F9;
-    padding: 10px;
 }
 .icons ul,.contactDetails ul {
     list-style-type: none;
+}
+.box{
+    background-color: #F0F2F9;
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+button{
+    color:black;
+    cursor: pointer;
+    padding: 4px 32px;
+    text-decoration: none;
+    margin: 4px 2px 8px;
+    background-color: #4CAF50;
 }
